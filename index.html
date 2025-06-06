@@ -2197,19 +2197,21 @@
                                                 if (
                                                     errorSpan.tagName.toLowerCase() !==
                                                     'span'
-                                                )
-                                                    if (!field.validity.valid) {
-                                                        errorSpan.textContent =
-                                                            field.value.trim() ===
-                                                            ''
-                                                                ? 'This field is required'
-                                                                : 'Invalid input. Please try again.'
-                                                        errorSpan.style.display =
-                                                            'block'
-                                                    } else {
-                                                        errorSpan.style.display =
-                                                            'none'
-                                                    }
+                                                ) {
+                                                    return
+                                                }
+                                                if (!field.validity.valid) {
+                                                    errorSpan.textContent =
+                                                        field.value.trim() ===
+                                                        ''
+                                                            ? 'This field is required'
+                                                            : 'Invalid input. Please try again.'
+                                                    errorSpan.style.display =
+                                                        'block'
+                                                } else {
+                                                    errorSpan.style.display =
+                                                        'none'
+                                                }
                                             })
                                         }
 
