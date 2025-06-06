@@ -2123,8 +2123,15 @@
                                         name="contact"
                                         method="POST"
                                         data-netlify="true"
+                                        action="/thank-you"
                                         novalidate
                                     >
+                                        <input
+                                            type="hidden"
+                                            name="form-name"
+                                            value="contact"
+                                        />
+
                                         <div class="row">
                                             <div class="field-container">
                                                 <label for="name"> Name </label>
@@ -2205,14 +2212,19 @@
                                         form.addEventListener(
                                             'submit',
                                             (event) => {
-                                                if (
-                                                    ![...inputFields].every(
-                                                        (field) =>
-                                                            field.validity.valid
-                                                    )
-                                                ) {
+                                                const allValid = [
+                                                    ...inputFields,
+                                                ].every(
+                                                    (field) =>
+                                                        field.validity.valid
+                                                )
+                                                if (!allValid) {
                                                     event.preventDefault()
                                                     showError()
+                                                } else {
+                                                    console.log(
+                                                        'Form is valid and submitting'
+                                                    )
                                                 }
                                             }
                                         )
